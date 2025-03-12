@@ -15,7 +15,7 @@ const About: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">About <span className="text-primary">Me</span></h2>
             <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Get to know the person behind your fitness transformation journey
+              Din vei til mestring og treningsglede
             </p>
           </motion.div>
         </div>
@@ -46,15 +46,23 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold mb-4">Pernille Hansen</h3>
-            <h4 className="text-lg text-primary font-medium mb-4">Certified Fitness Coach & Nutritionist</h4>
+            <h3 className="text-2xl font-bold mb-4">Pernille Strand</h3>
+            <h4 className="text-lg text-primary font-medium mb-4">Personlig Trener & Kostholdsveileder</h4>
             
             <p className="text-gray-600 mb-6">
-              With over 10 years of experience in the fitness industry, I've helped hundreds of clients transform their bodies and lives through personalized coaching and sustainable nutrition plans.
+              Hei, jeg heter Pernille Strand og min største lidenskap er styrketrening.
             </p>
             
             <p className="text-gray-600 mb-6">
-              My passion for fitness began when I transformed my own body and discovered the incredible impact it had on every aspect of my life. That personal journey inspired me to help others achieve the same life-changing results.
+              Jeg har drevet med idrett hele livet, men det var først i 2021, da jeg la fotballskoene på hylla, at jeg virkelig forelsket meg i styrketrening. Det var noe helt spesielt med følelsen av å trene for å bli sterkere – både fysisk og mentalt.
+            </p>
+            
+            <p className="text-gray-600 mb-6">
+              Etter hvert som jeg ble sterkere og mer muskuløs, vokste også interessen for selve faget og jeg bestemte meg for at jeg ville lære mer. Derfor tok jeg utdanning og ble sertifisert personlig trener og kostholdsveileder i 2024.
+            </p>
+            
+            <p className="text-gray-600 mb-6">
+              Nå har jeg jobbet som online coach i over ett år og coachet over 100 fantastiske kvinner! Mitt mål er å hjelpe deg med å nå målene dine samtidig som du får kjenne på mestring og treningsglede!
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -62,29 +70,29 @@ const About: React.FC = () => {
                 <svg className="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Personalized Training</span>
+                <span>Personlig Trening</span>
               </div>
               <div className="flex items-center">
                 <svg className="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Nutrition Planning</span>
+                <span>Kostholdsrådgivning</span>
               </div>
               <div className="flex items-center">
                 <svg className="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Certified Trainer</span>
+                <span>Sertifisert Trener</span>
               </div>
               <div className="flex items-center">
                 <svg className="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Holistic Approach</span>
+                <span>Helhetlig Tilnærming</span>
               </div>
             </div>
             
-            <a href="#contact" className="btn btn-primary">Get In Touch</a>
+            <a href="#contact" className="btn btn-primary">Ta Kontakt</a>
           </motion.div>
         </div>
       </div>
