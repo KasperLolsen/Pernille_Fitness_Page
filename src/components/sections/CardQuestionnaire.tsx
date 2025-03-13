@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import emailjs from "emailjs-com";
+import { sendFormDataToEmail } from "../../services/emailService";
 
 interface QuestionCardProps {
   title: string;
@@ -20,6 +21,15 @@ const CardQuestionnaire: React.FC = () => {
     email: "",
     phone: "",
   });
+
+  // Add loading and error states
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Initialize EmailJS when component mounts
+  useEffect(() => {
+    emailjs.init("YOUR_PUBLIC_KEY_HERE");
+  }, []);
 
   // Handle input changes
   const handleChange = (
@@ -44,15 +54,32 @@ const CardQuestionnaire: React.FC = () => {
     setCurrentStep((prev) => prev - 1);
   };
 
-  // Handle form submission
-  const handleSubmit = (e?: React.FormEvent) => {
+  // Updated handleSubmit function:
+  const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
 
-    // Here you would normally send the data to your backend or email service
-    console.log("Submitting form data:", answers);
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Move to thank you screen
-    nextStep();
+    try {
+      // Log what we're trying to send
+      console.log("Sending form data:", answers);
+
+      // Call the email service
+      const success = await sendFormDataToEmail(answers);
+
+      if (success) {
+        console.log("Email sent successfully");
+        nextStep();
+      } else {
+        setSubmitError("Unable to send your message. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setSubmitError("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Define all the question cards
@@ -233,6 +260,13 @@ const CardQuestionnaire: React.FC = () => {
           >
             {currentQuestion.content}
 
+            {/* Error message display */}
+            {submitError && (
+              <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-md">
+                {submitError}
+              </div>
+            )}
+
             {/* Buttons */}
             {!currentQuestion.hideButtons && (
               <div
@@ -245,6 +279,7 @@ const CardQuestionnaire: React.FC = () => {
                     type="button"
                     onClick={prevStep}
                     className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                    disabled={isSubmitting}
                   >
                     Back
                   </button>
@@ -253,10 +288,16 @@ const CardQuestionnaire: React.FC = () => {
                 <button
                   type={currentQuestion.isLast ? "submit" : "button"}
                   onClick={currentQuestion.isLast ? undefined : nextStep}
-                  disabled={!currentQuestion.canContinue}
+                  disabled={!currentQuestion.canContinue || isSubmitting}
                   className={`px-4 py-2 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
-                  {currentQuestion.isLast ? "Submit" : "Continue"}
+                  {isSubmitting ? (
+                    <span>Sending...</span>
+                  ) : currentQuestion.isLast ? (
+                    "Submit"
+                  ) : (
+                    "Continue"
+                  )}
                 </button>
               </div>
             )}
