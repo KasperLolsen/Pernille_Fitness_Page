@@ -22,7 +22,7 @@ const LiftApp: React.FC = () => {
               <span className="text-primary">LIFT</span> by Pernille
             </h2>
             <p className="text-lg text-gray-700 mb-6">
-              Ta treningsreisen din til neste nivå med LIFT by Pernille - din personlige treningspartner designet av Coach Pernille.
+              Ta treningsreisen din til neste nivå med LIFT by Pernille - din trofaste treningspartner, laget av Pernille Strand.
             </p>
             
             <ul className="space-y-4 mb-8">
@@ -32,7 +32,7 @@ const LiftApp: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span className="text-gray-700">Skreddersydde treningsprogrammer for alle nivåer</span>
+                <span className="text-gray-700">Treningsprogrammer for alle nivåer</span>
               </li>
               <li className="flex items-start">
                 <div className="bg-primary rounded-full p-1 mr-3 mt-1">
@@ -40,7 +40,7 @@ const LiftApp: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span className="text-gray-700">Video-instruksjoner for riktig teknikk</span>
+                <span className="text-gray-700">Video på hver øvelse for riktig teknikk</span>
               </li>
               <li className="flex items-start">
                 <div className="bg-primary rounded-full p-1 mr-3 mt-1">
@@ -48,7 +48,7 @@ const LiftApp: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span className="text-gray-700">Kostholdsplaner og oppskrifter</span>
+                <span className="text-gray-700">Månedlige utfordringer</span>
               </li>
               <li className="flex items-start">
                 <div className="bg-primary rounded-full p-1 mr-3 mt-1">
@@ -56,7 +56,23 @@ const LiftApp: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span className="text-gray-700">Fremgangssporing og personlige mål</span>
+                <span className="text-gray-700">Oppskrifter</span>
+              </li>
+              <li className="flex items-start">
+                <div className="bg-primary rounded-full p-1 mr-3 mt-1">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span className="text-gray-700">Logging av treningsøkter</span>
+              </li>
+              <li className="flex items-start">
+                <div className="bg-primary rounded-full p-1 mr-3 mt-1">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span className="text-gray-700">Felleskap du kan dele din reise med</span>
               </li>
             </ul>
             

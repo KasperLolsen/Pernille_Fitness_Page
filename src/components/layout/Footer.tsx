@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Pernille Fitness</h3>
+            <h3 className="text-xl font-bold mb-4">Strandcoaching</h3>
             <p className="mb-4 text-gray-300">
               Forvandler liv gjennom personlig treningsveiledning og ernæringsplaner.
             </p>
@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
-          <p>&copy; {currentYear} Pernille Fitness. Alle rettigheter reservert.</p>
+          <p>&copy; {currentYear} Strandcoaching - Din vei til mestring og treningsglede. Alle rettigheter reservert.</p>
         </div>
       </div>
     </footer>

@@ -48,40 +48,40 @@ const Services: React.FC = () => {
             <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">Mine <span className="text-primary">Tjenester</span></h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             <p className="text-gray-600 max-w-3xl mx-auto text-lg font-light">
-              Jeg tilbyr en rekke treningstjenester tilpasset dine behov, enten du ønsker kostholdsrådgivning, online coaching eller transformasjonsprogrammer.
+              Jeg tilbyr flere tjenester som kan justeres etter dine mål og ditt behov for oppfølging. Alle tjenester inkluderer tilgang til appen Zenfit, og ukentlig oppfølging.
             </p>
           </motion.div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           <ServiceCard
-            title="Kostholdsveiledning"
-            description="Få skreddersydd kostholdsplan og veiledning som passer dine mål, preferanser og livsstil. Ernæring som støtter dine treringsresultater."
+            title="Full pakke (anbefalt)"
+            description="Her får du den ultimate kombinasjon mellom treningsoppfølging og kostholdsveiledning for å sikre best mulig resultat."
             icon={
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M6 3a1 1 0 011-1h.01a1 1 0 010 2H7a1 1 0 01-1-1zm2 3a1 1 0 00-2 0v1a2 2 0 00-2 2v1a2 2 0 002 2h.5a.5.5 0 01.5.5v.5h2v-.5a.5.5 0 01.5-.5H10a2 2 0 002-2V9a2 2 0 00-2-2V6a1 1 0 10-2 0v1H6V6zm5 7a1 1 0 10-2 0v.01a1 1 0 102 0V16z" clipRule="evenodd" />
+                <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clipRule="evenodd" />
               </svg>
             }
             delay={0.1}
           />
           
           <ServiceCard
-            title="Online Coaching"
-            description="Fleksibel treningsveiledning og oppfølging uansett hvor du er. Få treningsprogram, kostholdsråd og støtte digitalt."
+            title="Treningsveiledning"
+            description="Få et skreddersydd treningsprogram som er spesiallaget til deg. Planen utarbeides utifra dine mål, forutsetninger og preferanser. ✅Tjenesten inkluderer egen app og ukentlig oppfølging"
             icon={
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2a1 1 0 00-1-1H7a1 1 0 00-1 1v2a1 1 0 01-1 1H3a1 1 0 01-1-1V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
+              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
               </svg>
             }
             delay={0.2}
           />
           
           <ServiceCard
-            title="Transformasjonsprogrammer"
-            description="Intensive trenings- og kostholdsplaner designet for å gi betydelige resultater innen en definert tidsramme. For deg som er klar for en forandring."
+            title="Kostholdsveiledning"
+            description="Få en skreddersydd matplan som tar deg fra A til Å, samtidig som at du nyter og lærer av prosessen. Planen baserer seg på hva du liker å spise fra før og målet er en varig kostholdsendring."
             icon={
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 2a1 1 0 00-1 1v1.323l-3.954 1.582a1 1 0 00-.646.934v4.286a1 1 0 00.648.937l3.952 1.566V18a1 1 0 002 0v-5.372l3.952-1.566a1 1 0 00.648-.937V5.838a1 1 0 00-.646-.934L11 4.323V3a1 1 0 00-1-1z" clipRule="evenodd" />
+              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z" />
               </svg>
             }
             delay={0.3}
