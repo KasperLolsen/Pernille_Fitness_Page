@@ -7,6 +7,7 @@ import About from "./components/sections/About";
 import Services from "./components/sections/Services";
 import Testimonials from "./components/sections/Testimonials";
 import Contact from "./components/sections/Contact";
+import LiftApp from "./components/sections/LiftApp";
 
 function App() {
   return (
@@ -15,9 +16,12 @@ function App() {
       <main>
         <Hero />
         <Contact />
-        <About />
-        <Services />
         <Testimonials />
+        <About />
+        <LiftApp />
+        <Services />
+        
+        
       </main>
       <Footer />
     </div>

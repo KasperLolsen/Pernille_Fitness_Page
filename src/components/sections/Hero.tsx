@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight drop-shadow-[0_0_12px_rgba(0,0,0,0.7)]">
-              <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.9)] relative">
+              <span className="text-white relative">
                 COACH
                 <motion.span 
                   initial={{ width: 0 }}
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
                 ></motion.span>
               </span>
               <br className="hidden md:block" /> 
-              PERNILLE
+              <span className="text-primary">PERNILLE</span>
             </h1>
             
             <div className="mt-6 mb-12">

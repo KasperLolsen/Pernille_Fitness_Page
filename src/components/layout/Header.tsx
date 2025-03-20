@@ -114,7 +114,22 @@ const Header: React.FC = () => {
                     key={index}
                     href={item.href} 
                     className="font-medium text-gray-800 hover:text-primary transition-colors py-2 border-b border-gray-100"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => {
+                      // Close the menu
+                      setIsMenuOpen(false);
+                      
+                      // Get the target element
+                      const targetId = item.href.replace('#', '');
+                      const targetElement = document.getElementById(targetId);
+                      
+                      // If the target exists, smoothly scroll to it
+                      if (targetElement) {
+                        e.preventDefault();
+                        setTimeout(() => {
+                          targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }, 300); // Small delay to allow menu to close
+                      }
+                    }}
                   >
                     {item.label}
                   </a>
@@ -123,7 +138,21 @@ const Header: React.FC = () => {
                 <a 
                   href="#contact"
                   className="flex items-center justify-center px-6 py-3 font-medium text-white bg-primary rounded-lg hover:bg-primary-dark transition-all duration-300 mt-4"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => {
+                    // Close the menu
+                    setIsMenuOpen(false);
+                    
+                    // Get the contact section element
+                    const contactSection = document.getElementById('contact');
+                    
+                    // If it exists, smoothly scroll to it
+                    if (contactSection) {
+                      e.preventDefault();
+                      setTimeout(() => {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                      }, 300); // Small delay to allow menu to close
+                    }
+                  }}
                 >
                   <span>Kom i gang</span>
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -45,10 +45,10 @@ const Services: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">Våre <span className="text-primary">Tjenester</span></h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">Mine <span className="text-primary">Tjenester</span></h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             <p className="text-gray-600 max-w-3xl mx-auto text-lg font-light">
-              Vi tilbyr en rekke treningstjenester tilpasset dine behov, enten du ønsker kostholdsrådgivning, online coaching eller transformasjonsprogrammer.
+              Jeg tilbyr en rekke treningstjenester tilpasset dine behov, enten du ønsker kostholdsrådgivning, online coaching eller transformasjonsprogrammer.
             </p>
           </motion.div>
         </div>

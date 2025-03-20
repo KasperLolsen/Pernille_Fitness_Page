@@ -4,8 +4,8 @@ const Logo: React.FC = () => {
   return (
     <a href="#home" className="flex items-center">
       <span className="font-bold text-2xl tracking-tight">
-        <span className="text-primary">Pernille</span>
-        <span className="ml-1">lifts</span>
+        <span className="text-primary">Strand</span>
+        <span className="ml-1">coaching</span>
       </span>
     </a>
   );
