@@ -6,12 +6,10 @@ const CardQuestionnaire: React.FC = () => {
   // Track current question and all answers
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedGoal, setSelectedGoal] = useState("");
-  const [selectedAge, setSelectedAge] = useState("");
-  const [selectedGender, setSelectedGender] = useState("");
+  const [birthdate, setBirthdate] = useState("");
   const [answers, setAnswers] = useState({
     helpWith: "",
-    age: "",
-    gender: "",
+    birthdate: "",
     moreDetails: "",
     name: "",
     email: "",
@@ -34,16 +32,11 @@ const CardQuestionnaire: React.FC = () => {
     setAnswers((prev) => ({ ...prev, helpWith: option }));
   };
 
-  // Handle age selection
-  const handleAgeSelect = (age: string) => {
-    setSelectedAge(age);
-    setAnswers((prev) => ({ ...prev, age: age }));
-  };
-
-  // Handle gender selection
-  const handleGenderSelect = (gender: string) => {
-    setSelectedGender(gender);
-    setAnswers((prev) => ({ ...prev, gender: gender }));
+  // Handle birthdate input
+  const handleBirthdateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setBirthdate(value);
+    setAnswers((prev) => ({ ...prev, birthdate: value }));
   };
 
   // Move to next question
@@ -84,12 +77,10 @@ const CardQuestionnaire: React.FC = () => {
           setIsSuccess(false);
           setCurrentStep(0);
           setSelectedGoal("");
-          setSelectedAge("");
-          setSelectedGender("");
+          setBirthdate("");
           setAnswers({
             helpWith: "",
-            age: "",
-            gender: "",
+            birthdate: "",
             moreDetails: "",
             name: "",
             email: "",
@@ -108,24 +99,10 @@ const CardQuestionnaire: React.FC = () => {
   };
 
   const goalOptions = [
-    { id: "bli-sterkere", label: "Bli sterkere og mer energisk", icon: "💪" },
-    { id: "livsstilsendring", label: "Skape en varig livsstilsendring", icon: "🌱" },
-    { id: "vektnedgang", label: "Fokusert vektnedgang og toning", icon: "⚖️" },
-    { id: "annet", label: "Andre treningsmål", icon: "✨" },
-  ];
-
-  const ageOptions = [
-    { id: "18-24", label: "18 - 24 år" },
-    { id: "25-34", label: "25 - 34 år" },
-    { id: "35-44", label: "35 - 44 år" },
-    { id: "45-plus", label: "45+ år" },
-  ];
-
-  const genderOptions = [
-    { id: "kvinne", label: "Kvinne" },
-    { id: "mann", label: "Mann" },
-    { id: "annet", label: "Annet" },
-    { id: "vil-ikke-oppgi", label: "Foretrekker å ikke oppgi" },
+    { id: "bli-sterkere", label: "Bli sterkere og bygge muskler", icon: "💪" },
+    { id: "vektendring", label: "Vektendring", icon: "⚖️" },
+    { id: "livsstilsendring", label: "Livsstilsendring", icon: "🌱" },
+    { id: "annet", label: "Annet", icon: "✨" },
   ];
 
   // If we're showing success message
@@ -184,6 +161,24 @@ const CardQuestionnaire: React.FC = () => {
             </motion.button>
           ))}
           
+          {/* Special field for "Annet" option */}
+          {selectedGoal === "Annet" && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              transition={{ duration: 0.3 }}
+              className="mt-4"
+            >
+              <textarea
+                name="moreDetails"
+                value={answers.moreDetails}
+                onChange={handleChange}
+                className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 h-24 resize-none transition duration-200"
+                placeholder="Fortell oss om dine spesifikke mål..."
+              />
+            </motion.div>
+          )}
+          
           {/* Next button */}
           <div className="mt-8">
             <motion.button
@@ -222,116 +217,30 @@ const CardQuestionnaire: React.FC = () => {
           >
             ←
           </button>
-          <h3 className="text-xl font-bold text-gray-800">Din aldersgruppe</h3>
+          <h3 className="text-xl font-bold text-gray-800">Når er du født?</h3>
         </div>
         
-        <div className="space-y-3">
-          {/* Age selection buttons */}
-          {ageOptions.map((option) => (
-            <motion.button
-              key={option.id}
-              onClick={() => handleAgeSelect(option.label)}
-              className={`w-full p-5 text-left rounded-xl transition-all duration-300 flex items-center ${
-                selectedAge === option.label 
-                  ? "bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 text-gray-800 shadow-md transform translate-y-[-2px]" 
-                  : "bg-gray-50 border border-gray-100 text-gray-700 hover:bg-gray-100 hover:shadow-sm"
-              }`}
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
-            >
-              <span className="font-medium">{option.label}</span>
-              {selectedAge === option.label && (
-                <motion.span 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="ml-auto w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center"
-                >
-                  ✓
-                </motion.span>
-              )}
-            </motion.button>
-          ))}
+        <div className="mt-3">
+          <input
+            type="date"
+            name="birthdate"
+            value={birthdate}
+            onChange={handleBirthdateChange}
+            className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition duration-200"
+          />
           
           {/* Next button */}
           <div className="mt-8">
             <motion.button
               onClick={nextStep}
-              disabled={!selectedAge}
+              disabled={!birthdate}
               className={`w-full p-4 rounded-xl text-white font-medium transition-all duration-300 ${
-                selectedAge 
+                birthdate 
                   ? "bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg" 
                   : "bg-gray-300 cursor-not-allowed"
               }`}
-              whileHover={selectedAge ? { y: -2 } : {}}
-              whileTap={selectedAge ? { y: 0 } : {}}
-            >
-              Neste steg
-            </motion.button>
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
-
-  // If we're showing the gender selection step
-  if (currentStep === 2) {
-    return (
-      <motion.div 
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -20 }}
-        transition={{ duration: 0.3 }}
-        className="w-full"
-      >
-        <div className="flex items-center mb-5">
-          <button 
-            onClick={prevStep} 
-            className="mr-3 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600"
-          >
-            ←
-          </button>
-          <h3 className="text-xl font-bold text-gray-800">Din informasjon</h3>
-        </div>
-        
-        <div className="space-y-3">
-          {/* Gender selection buttons */}
-          {genderOptions.map((option) => (
-            <motion.button
-              key={option.id}
-              onClick={() => handleGenderSelect(option.label)}
-              className={`w-full p-5 text-left rounded-xl transition-all duration-300 flex items-center ${
-                selectedGender === option.label 
-                  ? "bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 text-gray-800 shadow-md transform translate-y-[-2px]" 
-                  : "bg-gray-50 border border-gray-100 text-gray-700 hover:bg-gray-100 hover:shadow-sm"
-              }`}
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
-            >
-              <span className="font-medium">{option.label}</span>
-              {selectedGender === option.label && (
-                <motion.span 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="ml-auto w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center"
-                >
-                  ✓
-                </motion.span>
-              )}
-            </motion.button>
-          ))}
-          
-          {/* Next button */}
-          <div className="mt-8">
-            <motion.button
-              onClick={nextStep}
-              disabled={!selectedGender}
-              className={`w-full p-4 rounded-xl text-white font-medium transition-all duration-300 ${
-                selectedGender 
-                  ? "bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg" 
-                  : "bg-gray-300 cursor-not-allowed"
-              }`}
-              whileHover={selectedGender ? { y: -2 } : {}}
-              whileTap={selectedGender ? { y: 0 } : {}}
+              whileHover={birthdate ? { y: -2 } : {}}
+              whileTap={birthdate ? { y: 0 } : {}}
             >
               Neste steg
             </motion.button>
@@ -342,7 +251,7 @@ const CardQuestionnaire: React.FC = () => {
   }
 
   // If we're showing the additional details step
-  if (currentStep === 3) {
+  if (currentStep === 2) {
     return (
       <motion.div 
         initial={{ opacity: 0, x: 20 }}
@@ -363,14 +272,14 @@ const CardQuestionnaire: React.FC = () => {
         
         <div className="mt-3">
           <p className="text-gray-600 mb-4">
-            Har du spesifikke utfordringer, målsetninger eller noe annet du vil dele?
+            Utdyp med et par setninger hva du ønsker å oppnå gjennom coachingen.
           </p>
           <textarea
             name="moreDetails"
             value={answers.moreDetails}
             onChange={handleChange}
             className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 h-32 resize-none transition duration-200"
-            placeholder="F.eks. tidligere treningserfaring, eventuelle skader, spesifikke mål, etc."
+            placeholder="F.eks. øke styrke, forbedre kondisjon, bygge gode treningsvaner, forbedre livskvalitet, etc."
           />
           
           {/* Navigation buttons */}
@@ -390,7 +299,7 @@ const CardQuestionnaire: React.FC = () => {
   }
 
   // If we're showing the contact info step
-  if (currentStep === 4) {
+  if (currentStep === 3) {
     return (
       <motion.div 
         initial={{ opacity: 0, x: 20 }}
@@ -444,7 +353,7 @@ const CardQuestionnaire: React.FC = () => {
           
           <div>
             <label htmlFor="phone" className="block text-gray-600 mb-1 font-medium">
-              Telefon <span className="text-gray-400 font-normal text-sm">(valgfritt)</span>
+              Telefon
             </label>
             <input
               type="tel"
@@ -454,6 +363,7 @@ const CardQuestionnaire: React.FC = () => {
               onChange={handleChange}
               className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition duration-200"
               placeholder="+47 XXX XX XXX"
+              required
             />
           </div>
           
@@ -461,14 +371,14 @@ const CardQuestionnaire: React.FC = () => {
           <div className="pt-4">
             <motion.button
               onClick={handleSubmit}
-              disabled={isSubmitting || !answers.name || !answers.email}
+              disabled={isSubmitting || !answers.name || !answers.email || !answers.phone}
               className={`w-full p-4 rounded-xl text-white font-medium transition-all duration-300 ${
-                isSubmitting || !answers.name || !answers.email
+                isSubmitting || !answers.name || !answers.email || !answers.phone
                   ? "bg-gray-300 cursor-not-allowed"
                   : "bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg"
               }`}
-              whileHover={!isSubmitting && answers.name && answers.email ? { y: -2 } : {}}
-              whileTap={!isSubmitting && answers.name && answers.email ? { y: 0 } : {}}
+              whileHover={!isSubmitting && answers.name && answers.email && answers.phone ? { y: -2 } : {}}
+              whileTap={!isSubmitting && answers.name && answers.email && answers.phone ? { y: 0 } : {}}
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center">

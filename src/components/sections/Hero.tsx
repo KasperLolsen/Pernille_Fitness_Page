@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src="/images/Eventuelt forsidebilde_.JPG" 
-          alt="Pernille Fitness" 
+          alt="Pernille Strand" 
           className="w-full h-full object-cover md:object-cover object-[60%_center] filter brightness-150"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight drop-shadow-[0_0_12px_rgba(0,0,0,0.7)]">
               <span className="text-white relative inline-block">
-                COACH
+                PERNILLE
                 <motion.span 
                   initial={{ width: 0 }}
                   animate={{ width: '100%' }}
@@ -43,20 +43,14 @@ const Hero: React.FC = () => {
                 ></motion.span>
               </span>
               <br className="hidden md:block" /> 
-              <span className="text-primary">PERNILLE</span>
+              <span className="text-primary">STRAND</span>
             </h1>
             
             <div className="mt-6 mb-12">
               <h2 className="text-xl md:text-2xl lg:text-3xl text-white font-bold tracking-wide leading-relaxed">
                 {/* First line with text-shadow for better visibility */}
                 <div className="mb-1">
-                  <span className="text-primary font-extrabold" style={textShadowStyle}>Transformerer</span>
-                  <span className="font-semibold" style={textShadowStyle}> kropp og sinn</span>
-                </div>
-                
-                {/* Second line with text-shadow and different styling */}
-                <div className="font-normal italic text-white/95 text-base md:text-xl lg:text-2xl" style={textShadowStyle}>
-                  — din reise til en sterkere versjon av deg selv
+                  <span className="font-semibold" style={textShadowStyle}>Din vei til mestring og treningsglede</span>
                 </div>
               </h2>
             </div>

@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
             <span className="text-primary">Ta steget</span> mot dine treningsmål
           </h2>
           <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Fortell meg litt om deg selv og dine mål, så hjelper jeg deg med å finne den rette treningsplanen for akkurat deg.
+            Fortell meg litt om deg selv og dine mål så vi vet hvor vi skal starte når jeg tar kontakt!
           </p>
           
           <div className="relative">
