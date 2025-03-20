@@ -62,7 +62,7 @@ const LiftApp: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
-                href="https://apps.apple.com/no/app/lift-by-pernille/id6475253433"
+                href="https://apps.apple.com/search?term=lift%20by%20pernille"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-black hover:bg-black/90 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300"
@@ -72,6 +72,9 @@ const LiftApp: React.FC = () => {
                 </svg>
                 App Store
               </a>
+              <p className="text-sm text-gray-500 mt-2">
+                Merk: Søk etter "LIFT by Pernille" hvis appen ikke vises automatisk.
+              </p>
             </div>
           </motion.div>
           
