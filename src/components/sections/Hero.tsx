@@ -1,83 +1,78 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Custom styles for text shadows
+const textShadowStyle = {
+  textShadow: '0 0 10px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.5), 0 0 3px rgba(0, 0, 0, 1)'
+};
+
 const Hero: React.FC = () => {
   return (
-    <section className="relative bg-gray-50 overflow-hidden">
-      {/* Background diagonal shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-32 -right-32 w-96 h-96 bg-primary opacity-10 rounded-full"></div>
-        <div className="absolute top-64 -left-32 w-96 h-96 bg-secondary opacity-10 rounded-full"></div>
+    <section className="relative min-h-screen">
+      {/* Full-width background image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/images/Eventuelt forsidebilde_.JPG" 
+          alt="Pernille Fitness" 
+          className="w-full h-full object-cover md:object-cover object-[60%_center] filter brightness-150"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80";
+          }}
+        />
+        {/* Darker gradient overlay for better contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-dark/85 via-dark/70 to-transparent"></div>
       </div>
       
-      <div className="container relative pt-20 pb-24 md:pt-32 md:pb-48">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* Content overlaid on the left side with neon text effects */}
+      <div className="container relative z-10 flex h-screen">
+        <div className="w-full md:w-1/2 px-6 py-12 md:py-16 md:px-12 flex flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-dark mb-6">
-              Transform Your <span className="text-primary">Body</span> & <span className="text-primary">Life</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight drop-shadow-[0_0_12px_rgba(0,0,0,0.7)]">
+              <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.9)] relative">
+                COACH
+                <motion.span 
+                  initial={{ width: 0 }}
+                  animate={{ width: '100%' }}
+                  transition={{ delay: 0.8, duration: 0.8 }}
+                  className="absolute -bottom-1 left-0 h-1.5 bg-primary rounded-full"
+                ></motion.span>
+              </span>
+              <br className="hidden md:block" /> 
+              PERNILLE
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-8">
-              Personalized fitness coaching and nutrition plans tailored to your unique goals and lifestyle. Start your journey today!
-            </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <a href="#contact" className="btn btn-primary text-center">
-                Start Your Journey
-              </a>
-              <a href="#services" className="btn border-2 border-dark text-dark hover:bg-dark hover:text-white text-center">
-                Learn More
-              </a>
+            
+            <div className="mt-6 mb-12">
+              <h2 className="text-xl md:text-2xl lg:text-3xl text-white font-bold tracking-wide leading-relaxed">
+                {/* First line with text-shadow for better visibility */}
+                <div className="mb-1">
+                  <span className="text-primary font-extrabold" style={textShadowStyle}>Transformerer</span>
+                  <span className="font-semibold" style={textShadowStyle}> kropp og sinn</span>
+                </div>
+                
+                {/* Second line with text-shadow and different styling */}
+                <div className="font-normal italic text-white/95 text-base md:text-xl lg:text-2xl" style={textShadowStyle}>
+                  — din reise til en sterkere versjon av deg selv
+                </div>
+              </h2>
             </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden md:block"
-          >
-            <div className="relative">
-              <div className="absolute -top-6 -left-6 w-full h-full bg-primary rounded-2xl"></div>
-              <img 
-                src="/placeholder-fitness-coach.jpg" 
-                alt="Fitness Coach" 
-                className="relative z-10 w-full h-auto rounded-2xl shadow-xl object-cover"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80";
-                }}
-              />
-            </div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
+              className="mt-10"
+            >
+              <a href="#contact" className="inline-block bg-primary hover:bg-primary/90 text-white font-semibold py-3.5 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                Start din reise
+              </a>
+            </motion.div>
           </motion.div>
         </div>
-        
-        {/* Stats */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center"
-        >
-          <div>
-            <h3 className="text-3xl font-bold text-primary mb-2">500+</h3>
-            <p className="text-gray-600">Happy Clients</p>
-          </div>
-          <div>
-            <h3 className="text-3xl font-bold text-primary mb-2">10+</h3>
-            <p className="text-gray-600">Years Experience</p>
-          </div>
-          <div>
-            <h3 className="text-3xl font-bold text-primary mb-2">100%</h3>
-            <p className="text-gray-600">Satisfaction</p>
-          </div>
-          <div>
-            <h3 className="text-3xl font-bold text-primary mb-2">24/7</h3>
-            <p className="text-gray-600">Support</p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

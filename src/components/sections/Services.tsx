@@ -5,120 +5,97 @@ interface ServiceCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
-  delay: number;
+  delay?: number;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, delay }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, delay = 0 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow"
+      transition={{ duration: 0.6, delay }}
+      className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 group border-b-4 border-primary/70 hover:border-primary"
+      whileHover={{ 
+        y: -5,
+        transition: { duration: 0.2 }
+      }}
     >
-      <div className="text-primary mb-6">{icon}</div>
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+        {icon}
+      </div>
+      <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">{title}</h3>
+      <p className="text-gray-600 leading-relaxed">{description}</p>
     </motion.div>
   );
 };
 
 const Services: React.FC = () => {
   return (
-    <section id="services" className="section bg-gray-50">
-      <div className="container">
-        <div className="text-center mb-12">
+    <section id="services" className="section bg-gray-50 py-24 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-32 -left-20 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+      
+      <div className="container relative z-10">
+        <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">My <span className="text-primary">Services</span></h2>
-            <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Tailored fitness and nutrition solutions to help you achieve your goals
+            <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">Våre <span className="text-primary">Tjenester</span></h2>
+            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg font-light">
+              Vi tilbyr en rekke treningstjenester tilpasset dine behov, enten du ønsker kostholdsrådgivning, online coaching eller transformasjonsprogrammer.
             </p>
           </motion.div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <ServiceCard 
-            title="Personal Training"
-            description="One-on-one personalized training sessions designed to meet your specific fitness goals, whether it's weight loss, muscle gain, or overall fitness improvement."
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          <ServiceCard
+            title="Kostholdsveiledning"
+            description="Få skreddersydd kostholdsplan og veiledning som passer dine mål, preferanser og livsstil. Ernæring som støtter dine treringsresultater."
             icon={
-              <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M6 3a1 1 0 011-1h.01a1 1 0 010 2H7a1 1 0 01-1-1zm2 3a1 1 0 00-2 0v1a2 2 0 00-2 2v1a2 2 0 002 2h.5a.5.5 0 01.5.5v.5h2v-.5a.5.5 0 01.5-.5H10a2 2 0 002-2V9a2 2 0 00-2-2V6a1 1 0 10-2 0v1H6V6zm5 7a1 1 0 10-2 0v.01a1 1 0 102 0V16z" clipRule="evenodd" />
               </svg>
             }
             delay={0.1}
           />
           
-          <ServiceCard 
-            title="Nutrition Coaching"
-            description="Customized nutrition plans that complement your fitness routine and lifestyle, helping you fuel your body for optimal performance and results."
+          <ServiceCard
+            title="Online Coaching"
+            description="Fleksibel treningsveiledning og oppfølging uansett hvor du er. Få treningsprogram, kostholdsråd og støtte digitalt."
             icon={
-              <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2a1 1 0 00-1-1H7a1 1 0 00-1 1v2a1 1 0 01-1 1H3a1 1 0 01-1-1V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
               </svg>
             }
             delay={0.2}
           />
           
-          <ServiceCard 
-            title="Online Coaching"
-            description="Remote coaching programs that provide flexibility while ensuring accountability and results, with regular check-ins and adjustments to your plan."
+          <ServiceCard
+            title="Transformasjonsprogrammer"
+            description="Intensive trenings- og kostholdsplaner designet for å gi betydelige resultater innen en definert tidsramme. For deg som er klar for en forandring."
             icon={
-              <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 2a1 1 0 00-1 1v1.323l-3.954 1.582a1 1 0 00-.646.934v4.286a1 1 0 00.648.937l3.952 1.566V18a1 1 0 002 0v-5.372l3.952-1.566a1 1 0 00.648-.937V5.838a1 1 0 00-.646-.934L11 4.323V3a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
             }
             delay={0.3}
           />
-          
-          <ServiceCard 
-            title="Group Training"
-            description="Energetic and motivating group sessions that combine the benefits of personal training with the fun and community aspect of working out together."
-            icon={
-              <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-              </svg>
-            }
-            delay={0.4}
-          />
-          
-          <ServiceCard 
-            title="Transformation Programs"
-            description="Comprehensive 8-12 week programs designed for significant body transformations, combining training, nutrition, and lifestyle adjustments."
-            icon={
-              <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
-              </svg>
-            }
-            delay={0.5}
-          />
-          
-          <ServiceCard 
-            title="Lifestyle Coaching"
-            description="Holistic coaching that addresses not just fitness and nutrition, but also stress management, sleep quality, and overall wellbeing for lasting results."
-            icon={
-              <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-              </svg>
-            }
-            delay={0.6}
-          />
         </div>
         
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <a href="#contact" className="btn btn-primary">Book A Consultation</a>
+            <a href="#contact" className="btn btn-primary text-lg px-8 py-4 hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300">Bestill Konsultasjon</a>
           </motion.div>
         </div>
       </div>

@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Pernille Fitness</h3>
             <p className="mb-4 text-gray-300">
-              Transforming lives through personalized fitness coaching and nutrition plans.
+              Forvandler liv gjennom personlig treningsveiledning og ernæringsplaner.
             </p>
             <div className="flex space-x-4">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary">
@@ -27,27 +27,27 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-4">Hurtiglenker</h3>
             <ul className="space-y-2">
-              <li><a href="#about" className="text-gray-300 hover:text-primary">About Me</a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-primary">Services</a></li>
-              <li><a href="#testimonials" className="text-gray-300 hover:text-primary">Testimonials</a></li>
-              <li><a href="#contact" className="text-gray-300 hover:text-primary">Contact</a></li>
+              <li><a href="#about" className="text-gray-300 hover:text-primary">Om meg</a></li>
+              <li><a href="#services" className="text-gray-300 hover:text-primary">Tjenester</a></li>
+              <li><a href="#testimonials" className="text-gray-300 hover:text-primary">Tilbakemeldinger</a></li>
+              <li><a href="#contact" className="text-gray-300 hover:text-primary">Kontakt</a></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Contact Info</h3>
+            <h3 className="text-xl font-bold mb-4">Kontaktinformasjon</h3>
             <address className="not-italic text-gray-300">
-              <p className="mb-2">Email: <a href="mailto:info@pernillefitness.com" className="hover:text-primary">info@pernillefitness.com</a></p>
-              <p className="mb-2">Phone: <a href="tel:+4512345678" className="hover:text-primary">+45 12 34 56 78</a></p>
-              <p>Copenhagen, Denmark</p>
+              <p className="mb-2">E-post: <a href="mailto:info@pernillefitness.com" className="hover:text-primary">info@pernillefitness.com</a></p>
+              <p className="mb-2">Telefon: <a href="tel:+4512345678" className="hover:text-primary">+45 12 34 56 78</a></p>
+              <p>København, Danmark</p>
             </address>
           </div>
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
-          <p>&copy; {currentYear} Pernille Fitness. All rights reserved.</p>
+          <p>&copy; {currentYear} Pernille Fitness. Alle rettigheter reservert.</p>
         </div>
       </div>
     </footer>
