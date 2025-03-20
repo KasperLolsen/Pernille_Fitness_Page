@@ -56,9 +56,9 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Kontaktinformasjon</h3>
             <address className="not-italic text-gray-300">
-              <p className="mb-2">E-post: <a href="mailto:info@pernillefitness.com" className="hover:text-primary">info@pernillefitness.com</a></p>
-              <p className="mb-2">Telefon: <a href="tel:+4512345678" className="hover:text-primary">+45 12 34 56 78</a></p>
-              <p>København, Danmark</p>
+              <p className="mb-2">E-post: <a href="mailto:pernille-strand@hotmail.com" className="hover:text-primary">pernille-strand@hotmail.com</a></p>
+              <p className="mb-2">Telefon: <a href="tel:+4790273020" className="hover:text-primary">+47 90 27 30 20</a></p>
+              <p>Oslo, Norge</p>
             </address>
           </div>
         </div>

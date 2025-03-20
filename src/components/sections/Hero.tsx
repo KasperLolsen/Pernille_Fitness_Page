@@ -8,7 +8,7 @@ const textShadowStyle = {
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen">
+    <section className="relative min-h-screen overflow-hidden">
       {/* Full-width background image */}
       <div className="absolute inset-0 z-0">
         <img 

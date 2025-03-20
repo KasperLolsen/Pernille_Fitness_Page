@@ -72,9 +72,6 @@ const LiftApp: React.FC = () => {
                 </svg>
                 App Store
               </a>
-              <p className="text-sm text-gray-500 mt-2">
-                Merk: Søk etter "LIFT by Pernille" hvis appen ikke vises automatisk.
-              </p>
             </div>
           </motion.div>
           
