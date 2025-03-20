@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight drop-shadow-[0_0_12px_rgba(0,0,0,0.7)]">
-              <span className="text-white relative">
+              <span className="text-white relative inline-block">
                 COACH
                 <motion.span 
                   initial={{ width: 0 }}
