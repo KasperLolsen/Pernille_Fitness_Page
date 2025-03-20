@@ -6,7 +6,7 @@ const EMAILJS_SERVICE_ID = "service_fl6v9gl"; // Your Service ID
 const EMAILJS_TEMPLATE_ID = "template_3a6p0pc"; // Replace with your actual template ID from dashboard
 
 // Store recipient email in one place for easy updates later
-export const RECIPIENT_EMAIL = "kasper.l.olsen2002@gmail.com";
+export const RECIPIENT_EMAIL = "pernille-strand@hotmail.com";
 
 // Initialize EmailJS - call this directly, not in useEffect
 emailjs.init(EMAILJS_USER_ID);
@@ -14,7 +14,9 @@ emailjs.init(EMAILJS_USER_ID);
 // Interface for the form data
 interface FormData {
   helpWith: string;
+  birthdate: string;
   moreDetails: string;
+  annetDetails: string;
   name: string;
   email: string;
   phone: string;
@@ -65,15 +67,32 @@ export const sendFormDataToEmail = async (
   formData: FormData
 ): Promise<boolean> => {
   try {
-    // Prepare the template parameters
+    // Create a formatted message string instead of relying on template variables
+    const formattedMessage = `
+Name: ${formData.name || "Ikke angitt"}
+Email: ${formData.email || "Ikke angitt"}
+Phone: ${formData.phone || "Ikke angitt"}
+Birthdate: ${formData.birthdate || "Ikke angitt"}
+Service: ${formData.helpWith || "Ikke spesifisert"}
+${formData.annetDetails ? `Annet Details: ${formData.annetDetails}` : ""}
+${formData.moreDetails ? `Additional Details: ${formData.moreDetails}` : ""}
+    `.trim();
+    
+    // Determine service type for subject line
+    let serviceType = formData.helpWith || "Ikke spesifisert";
+    if (serviceType === "Annet" && formData.annetDetails) {
+      serviceType = "Annet: " + formData.annetDetails.substring(0, 30) + (formData.annetDetails.length > 30 ? "..." : "");
+    }
+    
+    // Simplified template parameters
     const templateParams = {
-      to_email: RECIPIENT_EMAIL, // Makes it easy to change in one place
-      from_name: formData.name,
-      from_email: formData.email,
-      phone: formData.phone,
-      service_type: formData.helpWith,
-      message: formData.moreDetails,
-      reply_to: formData.email,
+      to_email: RECIPIENT_EMAIL,
+      from_name: formData.name || "Ikke angitt",
+      from_email: formData.email || "Ikke angitt",
+      phone: formData.phone || "Ikke angitt",
+      service_type: serviceType,
+      message: formattedMessage,
+      reply_to: formData.email || "",
     };
 
     console.log("Attempting to send email with params:", templateParams);

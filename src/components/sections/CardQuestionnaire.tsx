@@ -11,6 +11,7 @@ const CardQuestionnaire: React.FC = () => {
     helpWith: "",
     birthdate: "",
     moreDetails: "",
+    annetDetails: "",
     name: "",
     email: "",
     phone: "",
@@ -82,6 +83,7 @@ const CardQuestionnaire: React.FC = () => {
             helpWith: "",
             birthdate: "",
             moreDetails: "",
+            annetDetails: "",
             name: "",
             email: "",
             phone: "",
@@ -170,8 +172,8 @@ const CardQuestionnaire: React.FC = () => {
               className="mt-4"
             >
               <textarea
-                name="moreDetails"
-                value={answers.moreDetails}
+                name="annetDetails"
+                value={answers.annetDetails}
                 onChange={handleChange}
                 className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 h-24 resize-none transition duration-200"
                 placeholder="Fortell oss om dine spesifikke mål..."
