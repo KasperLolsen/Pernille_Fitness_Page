@@ -21,6 +21,7 @@ const LiftApp: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               <span className="text-primary">LIFT</span> by Pernille
             </h2>
+            <p className="text-base text-primary font-medium mb-4">Et Billigere alternativ for 1-til-1 coaching</p>
             <p className="text-lg text-gray-700 mb-6">
               Ta treningsreisen din til neste nivå med LIFT by Pernille - din trofaste treningspartner, laget av Pernille Strand.
             </p>
