@@ -8,6 +8,7 @@ import Services from "./components/sections/Services";
 import Testimonials from "./components/sections/Testimonials";
 import Contact from "./components/sections/Contact";
 import LiftApp from "./components/sections/LiftApp";
+import GluteGuide from "./components/sections/GluteGuide";
 
 function App() {
   return (
@@ -20,8 +21,7 @@ function App() {
         <About />
         <LiftApp />
         <Services />
-        
-        
+        <GluteGuide />
       </main>
       <Footer />
     </div>
