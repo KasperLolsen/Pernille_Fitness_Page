@@ -57,7 +57,6 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-bold mb-4">Kontaktinformasjon</h3>
             <address className="not-italic text-gray-300">
               <p className="mb-2">E-post: <a href="mailto:pernille-strand@hotmail.com" className="hover:text-primary">pernille-strand@hotmail.com</a></p>
-              <p className="mb-2">Telefon: <a href="tel:+4790273020" className="hover:text-primary">+47 90 27 30 20</a></p>
               <p>Oslo, Norge</p>
             </address>
           </div>
