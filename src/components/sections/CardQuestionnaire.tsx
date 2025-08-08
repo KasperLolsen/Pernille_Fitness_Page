@@ -103,7 +103,7 @@ const CardQuestionnaire: React.FC = () => {
   const goalOptions = [
     { id: "bli-sterkere", label: "Bli sterkere og bygge muskler", icon: "💪" },
     { id: "vektendring", label: "Vektendring", icon: "⚖️" },
-    { id: "livsstilsendring", label: "Livsstilsendring", icon: "🌱" },
+    { id: "livsstilsendring", label: "Lære calisthenics", icon: "🌱" },
     { id: "annet", label: "Annet", icon: "✨" },
   ];
 
