@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from '../ui/Logo';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const { language, setLanguage, t } = useLanguage();
+
   const navItems = [
-    { href: "#home", label: "Hjem" },
-    { href: "#about", label: "Om Meg" },
-    { href: "#services", label: "Tjenester" },
-    { href: "#lift-app", label: "LiftApp" },
-    { href: "#testimonials", label: "Resultater" },
-    { href: "#contact", label: "Kontakt" }
+    { href: "#home", label: t('nav.home') },
+    { href: "#about", label: t('nav.about') },
+    { href: "#services", label: t('nav.services') },
+    { href: "#lift-app", label: t('nav.liftapp') },
+    { href: "#testimonials", label: t('nav.testimonials') },
+    { href: "#contact", label: t('nav.contact') }
   ];
 
   // Handle scroll event to change header style
@@ -51,15 +53,24 @@ const Header: React.FC = () => {
           className="hidden md:flex space-x-8 items-center"
         >
           {navItems.map((item, index) => (
-            <a 
-              key={index} 
-              href={item.href} 
+            <a
+              key={index}
+              href={item.href}
               className={`font-medium hover:text-primary transition-colors relative group ${isScrolled ? 'text-gray-800' : 'text-white'}`}
             >
               {item.label}
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
+
+          {/* Language Toggle */}
+          <button
+            onClick={() => setLanguage(language === 'no' ? 'en' : 'no')}
+            className={`px-3 py-1.5 rounded-md font-medium transition-colors ${isScrolled ? 'text-gray-800 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}
+            aria-label="Toggle language"
+          >
+            {language === 'no' ? 'EN' : 'NO'}
+          </button>
         </motion.nav>
         
         <motion.div
@@ -67,11 +78,11 @@ const Header: React.FC = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className="hidden md:flex items-center px-6 py-3 font-medium text-white bg-primary rounded-full hover:bg-primary-dark transition-all duration-300 shadow-md hover:shadow-lg hover:translate-y-[-2px]"
           >
-            <span>Kom i gang</span>
+            <span>{t('nav.cta')}</span>
             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
@@ -136,16 +147,16 @@ const Header: React.FC = () => {
                   </a>
                 ))}
                 
-                <a 
+                <a
                   href="#contact"
                   className="flex items-center justify-center px-6 py-3 font-medium text-white bg-primary rounded-lg hover:bg-primary-dark transition-all duration-300 mt-4"
                   onClick={(e) => {
                     // Close the menu
                     setIsMenuOpen(false);
-                    
+
                     // Get the contact section element
                     const contactSection = document.getElementById('contact');
-                    
+
                     // If it exists, smoothly scroll to it
                     if (contactSection) {
                       e.preventDefault();
@@ -155,11 +166,19 @@ const Header: React.FC = () => {
                     }
                   }}
                 >
-                  <span>Kom i gang</span>
+                  <span>{t('nav.cta')}</span>
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
+
+                {/* Language Toggle for Mobile */}
+                <button
+                  onClick={() => setLanguage(language === 'no' ? 'en' : 'no')}
+                  className="w-full p-3 text-center font-medium text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 mt-2"
+                >
+                  {language === 'no' ? 'Switch to English' : 'Bytt til Norsk'}
+                </button>
               </div>
             </div>
           </motion.div>

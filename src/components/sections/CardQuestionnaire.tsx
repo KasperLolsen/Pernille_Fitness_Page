@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { sendFormDataToEmail } from "../../services/emailService";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const CardQuestionnaire: React.FC = () => {
+  const { t } = useLanguage();
+
   // Track current question and all answers
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedGoal, setSelectedGoal] = useState("");
@@ -90,21 +93,21 @@ const CardQuestionnaire: React.FC = () => {
           });
         }, 3000);
       } else {
-        setSubmitError("Kunne ikke sende meldingen. Vennligst prøv igjen senere.");
+        setSubmitError(t('form.error'));
       }
     } catch (error) {
       console.error("Error sending email:", error);
-      setSubmitError("En uventet feil oppstod. Vennligst prøv igjen.");
+      setSubmitError(t('form.error'));
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const goalOptions = [
-    { id: "bli-sterkere", label: "Bli sterkere og bygge muskler", icon: "💪" },
-    { id: "vektendring", label: "Vektendring", icon: "⚖️" },
-    { id: "livsstilsendring", label: "Lære calisthenics", icon: "🌱" },
-    { id: "annet", label: "Annet", icon: "✨" },
+    { id: "bli-sterkere", label: t('form.goal.strength'), icon: "💪" },
+    { id: "vektendring", label: t('form.goal.weight'), icon: "⚖️" },
+    { id: "livsstilsendring", label: t('form.goal.calisthenics'), icon: "🌱" },
+    { id: "annet", label: t('form.goal.other'), icon: "✨" },
   ];
 
   // If we're showing success message
@@ -121,9 +124,9 @@ const CardQuestionnaire: React.FC = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-3">Takk for din henvendelse!</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-3">{t('form.success.title')}</h3>
           <p className="text-gray-600">
-            Jeg ser frem til å hjelpe deg med å nå dine mål. Du vil høre fra meg innen 1-2 virkedager for å diskutere hvordan vi kan skape resultater sammen.
+            {t('form.success.message')}
           </p>
         </div>
       </motion.div>
@@ -134,7 +137,7 @@ const CardQuestionnaire: React.FC = () => {
   if (currentStep === 0) {
     return (
       <div className="w-full">
-        <h3 className="text-xl font-bold text-gray-800 mb-5">Hva ønsker du å oppnå?</h3>
+        <h3 className="text-xl font-bold text-gray-800 mb-5">{t('form.step1.title')}</h3>
         <div className="space-y-3">
           {/* Goal selection buttons */}
           {goalOptions.map((option) => (
@@ -164,7 +167,7 @@ const CardQuestionnaire: React.FC = () => {
           ))}
           
           {/* Special field for "Annet" option */}
-          {selectedGoal === "Annet" && (
+          {selectedGoal === t('form.goal.other') && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
@@ -176,25 +179,25 @@ const CardQuestionnaire: React.FC = () => {
                 value={answers.annetDetails}
                 onChange={handleChange}
                 className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 h-24 resize-none transition duration-200"
-                placeholder="Fortell oss om dine spesifikke mål..."
+                placeholder={t('form.other.placeholder')}
               />
             </motion.div>
           )}
-          
+
           {/* Next button */}
           <div className="mt-8">
             <motion.button
               onClick={nextStep}
               disabled={!selectedGoal}
               className={`w-full p-4 rounded-xl text-white font-medium transition-all duration-300 ${
-                selectedGoal 
-                  ? "bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg" 
+                selectedGoal
+                  ? "bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg"
                   : "bg-gray-300 cursor-not-allowed"
               }`}
               whileHover={selectedGoal ? { y: -2 } : {}}
               whileTap={selectedGoal ? { y: 0 } : {}}
             >
-              Neste steg
+              {t('form.next')}
             </motion.button>
           </div>
         </div>
@@ -219,9 +222,9 @@ const CardQuestionnaire: React.FC = () => {
           >
             ←
           </button>
-          <h3 className="text-xl font-bold text-gray-800">Når er du født?</h3>
+          <h3 className="text-xl font-bold text-gray-800">{t('form.step2.title')}</h3>
         </div>
-        
+
         <div className="mt-3">
           <input
             type="date"
@@ -230,21 +233,21 @@ const CardQuestionnaire: React.FC = () => {
             onChange={handleBirthdateChange}
             className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition duration-200"
           />
-          
+
           {/* Next button */}
           <div className="mt-8">
             <motion.button
               onClick={nextStep}
               disabled={!birthdate}
               className={`w-full p-4 rounded-xl text-white font-medium transition-all duration-300 ${
-                birthdate 
-                  ? "bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg" 
+                birthdate
+                  ? "bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg"
                   : "bg-gray-300 cursor-not-allowed"
               }`}
               whileHover={birthdate ? { y: -2 } : {}}
               whileTap={birthdate ? { y: 0 } : {}}
             >
-              Neste steg
+              {t('form.next')}
             </motion.button>
           </div>
         </div>
@@ -269,21 +272,21 @@ const CardQuestionnaire: React.FC = () => {
           >
             ←
           </button>
-          <h3 className="text-xl font-bold text-gray-800">Fortell meg litt mer</h3>
+          <h3 className="text-xl font-bold text-gray-800">{t('form.step3.title')}</h3>
         </div>
-        
+
         <div className="mt-3">
           <p className="text-gray-600 mb-4">
-            Utdyp med et par setninger hva du ønsker å oppnå gjennom coachingen.
+            {t('form.step3.subtitle')}
           </p>
           <textarea
             name="moreDetails"
             value={answers.moreDetails}
             onChange={handleChange}
             className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 h-32 resize-none transition duration-200"
-            placeholder="F.eks. øke styrke, forbedre kondisjon, bygge gode treningsvaner, forbedre livskvalitet, etc."
+            placeholder={t('form.step3.placeholder')}
           />
-          
+
           {/* Navigation buttons */}
           <div className="flex gap-4 mt-6">
             <motion.button
@@ -292,7 +295,7 @@ const CardQuestionnaire: React.FC = () => {
               whileHover={{ y: -2 }}
               whileTap={{ y: 0 }}
             >
-              Neste steg
+              {t('form.next')}
             </motion.button>
           </div>
         </div>
@@ -317,13 +320,13 @@ const CardQuestionnaire: React.FC = () => {
           >
             ←
           </button>
-          <h3 className="text-xl font-bold text-gray-800">Dine kontaktopplysninger</h3>
+          <h3 className="text-xl font-bold text-gray-800">{t('form.step4.title')}</h3>
         </div>
-        
+
         <div className="space-y-4 mt-3">
           <div>
             <label htmlFor="name" className="block text-gray-600 mb-1 font-medium">
-              Navn
+              {t('form.name')}
             </label>
             <input
               type="text"
@@ -332,14 +335,14 @@ const CardQuestionnaire: React.FC = () => {
               value={answers.name}
               onChange={handleChange}
               className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition duration-200"
-              placeholder="Ditt fulle navn"
+              placeholder={t('form.name.placeholder')}
               required
             />
           </div>
-          
+
           <div>
             <label htmlFor="email" className="block text-gray-600 mb-1 font-medium">
-              E-post
+              {t('form.email')}
             </label>
             <input
               type="email"
@@ -348,14 +351,14 @@ const CardQuestionnaire: React.FC = () => {
               value={answers.email}
               onChange={handleChange}
               className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition duration-200"
-              placeholder="din@email.no"
+              placeholder={t('form.email.placeholder')}
               required
             />
           </div>
-          
+
           <div>
             <label htmlFor="phone" className="block text-gray-600 mb-1 font-medium">
-              Telefon
+              {t('form.phone')}
             </label>
             <input
               type="tel"
@@ -364,7 +367,7 @@ const CardQuestionnaire: React.FC = () => {
               value={answers.phone}
               onChange={handleChange}
               className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition duration-200"
-              placeholder="+47 XXX XX XXX"
+              placeholder={t('form.phone.placeholder')}
               required
             />
           </div>
@@ -388,21 +391,21 @@ const CardQuestionnaire: React.FC = () => {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Sender...
+                  {t('form.sending')}
                 </span>
               ) : (
-                "Send inn"
+                t('form.submit')
               )}
             </motion.button>
-            
+
             {submitError && (
               <p className="mt-3 text-red-500 text-sm">
                 {submitError}
               </p>
             )}
-            
+
             <p className="mt-4 text-xs text-gray-500 text-center">
-              Ved å sende inn dette skjemaet godtar du at jeg tar kontakt med deg angående treningstjenester. Jeg respekterer ditt privatliv og dine data vil aldri deles med tredjepart.
+              {t('form.privacy')}
             </p>
           </div>
         </div>

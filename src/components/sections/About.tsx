@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const About: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <section id="about" className="section bg-white py-24">
       <div className="container">
@@ -12,10 +14,10 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">Om <span className="text-primary">Meg</span></h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">{t('about.title')} <span className="text-primary">{t('about.title.highlight')}</span></h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             <p className="text-gray-600 max-w-3xl mx-auto text-lg font-light">
-              Coach, samarbeidspartner og venninne i samme person
+              {t('about.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -47,23 +49,23 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="pr-8"
           >
-            <h3 className="text-3xl font-bold mb-5 tracking-tight">Pernille Strand</h3>
-            <h4 className="text-xl text-primary font-medium mb-6">Personlig Trener & Kostholdsveileder</h4>
-            
+            <h3 className="text-3xl font-bold mb-5 tracking-tight">{t('about.name')}</h3>
+            <h4 className="text-xl text-primary font-medium mb-6">{t('about.title.role')}</h4>
+
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Hei, jeg heter Pernille Strand og min største lidenskap er styrketrening.
+              {t('about.p1')}
             </p>
-            
+
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Jeg har drevet med idrett hele livet, men det var først i 2021, da jeg la fotballskoene på hylla, at jeg virkelig forelsket meg i styrketrening. Det var noe helt spesielt med følelsen av å trene for å bli sterkere – både fysisk og mentalt.
+              {t('about.p2')}
             </p>
-            
+
             <p className="text-gray-700 mb-6 leading-relaxed">
-              Etter hvert som jeg ble sterkere og mer muskuløs, vokste også interessen for selve faget og jeg bestemte meg for at jeg ville lære mer. Derfor tok jeg utdanning og ble sertifisert personlig trener og kostholdsveileder i 2024.
+              {t('about.p3')}
             </p>
-            
+
             <p className="text-gray-700 mb-8 leading-relaxed">
-              Nå har jeg jobbet som online coach i over ett år og coachet over 100 fantastiske kvinner! Jeg liker å se på meg selv som coach, samarbeidspartner og venninne i samme person. Mitt mål er å hjelpe deg med å nå målene dine samtidig som du får kjenne på mestring og treningsglede!
+              {t('about.p4')}
             </p>
             
             <div className="grid grid-cols-1 gap-4 mb-10">
@@ -73,7 +75,7 @@ const About: React.FC = () => {
                     <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
                   </svg>
                 </span>
-                <span className="font-medium">Utdannet ved Active education</span>
+                <span className="font-medium">{t('about.education')}</span>
               </div>
               <div className="flex items-center group">
                 <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3 group-hover:bg-primary group-hover:text-white transition-all duration-300">
@@ -81,7 +83,7 @@ const About: React.FC = () => {
                     <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
                   </svg>
                 </span>
-                <span className="font-medium">Sertifisert Personlig trener</span>
+                <span className="font-medium">{t('about.cert1')}</span>
               </div>
               <div className="flex items-center group">
                 <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3 group-hover:bg-primary group-hover:text-white transition-all duration-300">
@@ -89,11 +91,11 @@ const About: React.FC = () => {
                     <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                   </svg>
                 </span>
-                <span className="font-medium">Sertifisert Kostholdsveileder</span>
+                <span className="font-medium">{t('about.cert2')}</span>
               </div>
             </div>
-            
-            <a href="#contact" className="btn btn-primary hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300">Ta Kontakt</a>
+
+            <a href="#contact" className="btn btn-primary hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300">{t('about.cta')}</a>
           </motion.div>
         </div>
       </div>

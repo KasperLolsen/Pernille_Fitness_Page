@@ -1,16 +1,18 @@
 import React from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-dark text-white py-12">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Strandcoaching</h3>
+            <h3 className="text-xl font-bold mb-4">{t('footer.brand')}</h3>
             <p className="mb-4 text-gray-300">
-              Forvandler liv gjennom personlig treningsveiledning og ernæringsplaner.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               {/* Instagram */}
@@ -44,26 +46,26 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Hurtiglenker</h3>
+            <h3 className="text-xl font-bold mb-4">{t('footer.links.title')}</h3>
             <ul className="space-y-2">
-              <li><a href="#about" className="text-gray-300 hover:text-primary">Om meg</a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-primary">Tjenester</a></li>
-              <li><a href="#testimonials" className="text-gray-300 hover:text-primary">Tilbakemeldinger</a></li>
-              <li><a href="#contact" className="text-gray-300 hover:text-primary">Kontakt</a></li>
+              <li><a href="#about" className="text-gray-300 hover:text-primary">{t('footer.links.about')}</a></li>
+              <li><a href="#services" className="text-gray-300 hover:text-primary">{t('footer.links.services')}</a></li>
+              <li><a href="#testimonials" className="text-gray-300 hover:text-primary">{t('footer.links.testimonials')}</a></li>
+              <li><a href="#contact" className="text-gray-300 hover:text-primary">{t('footer.links.contact')}</a></li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="text-xl font-bold mb-4">Kontaktinformasjon</h3>
+            <h3 className="text-xl font-bold mb-4">{t('footer.contact.title')}</h3>
             <address className="not-italic text-gray-300">
-              <p className="mb-2">E-post: <a href="mailto:pernille-strand@hotmail.com" className="hover:text-primary">pernille-strand@hotmail.com</a></p>
-              <p>Oslo, Norge</p>
+              <p className="mb-2">{t('footer.contact.email')} <a href="mailto:pernille-strand@hotmail.com" className="hover:text-primary">pernille-strand@hotmail.com</a></p>
+              <p>{t('footer.contact.location')}</p>
             </address>
           </div>
         </div>
-        
+
         <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
-          <p>&copy; {currentYear} Strandcoaching - Din vei til mestring og treningsglede. Alle rettigheter reservert.</p>
+          <p>&copy; {currentYear} {t('footer.copyright')}</p>
         </div>
       </div>
     </footer>

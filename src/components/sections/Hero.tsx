@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 // Custom styles for text shadows
 const textShadowStyle = {
@@ -7,6 +8,7 @@ const textShadowStyle = {
 };
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <section id="home" className="relative min-h-screen overflow-hidden">
       {/* Full-width background image */}
@@ -50,11 +52,11 @@ const Hero: React.FC = () => {
               <h2 className="text-xl md:text-2xl lg:text-3xl text-white font-bold tracking-wide leading-relaxed">
                 {/* First line with text-shadow for better visibility */}
                 <div className="mb-1">
-                  <span className="font-semibold" style={textShadowStyle}>Din vei til mestring og treningsglede</span>
+                  <span className="font-semibold" style={textShadowStyle}>{t('hero.tagline')}</span>
                 </div>
               </h2>
             </div>
-            
+
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -62,7 +64,7 @@ const Hero: React.FC = () => {
               className="mt-10"
             >
               <a href="#contact" className="inline-block bg-primary hover:bg-primary/90 text-white font-semibold py-3.5 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                Start din reise
+                {t('hero.cta')}
               </a>
             </motion.div>
           </motion.div>

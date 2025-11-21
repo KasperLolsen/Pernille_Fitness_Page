@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Testimonials: React.FC = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     // Load the SimplyReview widget script
     const script = document.createElement('script');
@@ -36,10 +38,10 @@ const Testimonials: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">Feedback fra <span className="text-primary">klienter</span></h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">{t('testimonials.title')} <span className="text-primary">{t('testimonials.title.highlight')}</span></h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             <p className="text-gray-600 max-w-3xl mx-auto text-lg font-light">
-              Her kan du lese hvordan tidligere klienter opplevde coachingen og hva de sitter igjen med etter å ha hatt meg som coach.
+              {t('testimonials.subtitle')}
             </p>
           </motion.div>
         </div>
