@@ -237,12 +237,27 @@ const translations: Record<Language, Record<string, string>> = {
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
+    // Check URL first
+    const path = window.location.pathname;
+    if (path.startsWith('/en')) {
+      return 'en';
+    }
+
+    // Then check localStorage
     const saved = localStorage.getItem('language');
     return (saved === 'en' || saved === 'no') ? saved : 'no';
   });
 
   useEffect(() => {
     localStorage.setItem('language', language);
+
+    // Update URL when language changes
+    const currentPath = window.location.pathname;
+    if (language === 'en' && !currentPath.startsWith('/en')) {
+      window.history.pushState({}, '', '/en');
+    } else if (language === 'no' && currentPath.startsWith('/en')) {
+      window.history.pushState({}, '', '/');
+    }
   }, [language]);
 
   const setLanguage = (lang: Language) => {
